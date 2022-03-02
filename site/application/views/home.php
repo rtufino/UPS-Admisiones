@@ -4,11 +4,11 @@
 
     <div class="row">
         <div class="col-md-1 ">
-            <img src="<?php echo base_url(); ?>static/logo.png" class="rounded mx-auto d-block" alt="UPS" width="100px">
+            <img src="<?php echo base_url(); ?>static/logo2.png" class="rounded mx-auto d-block" alt="UPS" width="100px">
         </div>
         <div class="col-md-11 text-center">
-            <h3>Universidad Politécnica Salesiana</h3>
-            <h4>CENTRO PSICOLÓGIO “PADRE EMILIO GAMBIRASIO”</h4>
+            <h3 style="font-weight:bold">Universidad Politécnica Salesiana</h3>
+            <h4 style="font-weight:bold">CENTRO PSICOLÓGICO “PADRE EMILIO GAMBIRASIO”</h4>
             <h5>PERFIL DE INTERESES PROFESIONALES</h5>
         </div>
     </div>
@@ -44,7 +44,7 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-header">
-                    <h6>Datos informativos</h6>
+                    <h6>Datos informativos </h6>
                     Llena la siguiente información con tus datos personales.
                 </div>
                 <div class="card-body">
@@ -90,50 +90,68 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="control-label requiredField" for="inTipoCarrera">¿Que le interesaría estudiar?</label>            
+                            <select name="inTipoCarrera" class="custom-select" required>
+                                <option disabled selected value> -- Selecciona una opción -- </option>
+                                <option value="Tecnologica">Carrera tecnológica</option>
+                                <option value="Universitaria">Carrera universitaria</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label requiredField" for="inCursoPrevio">¿Cursó previamente alguna carrera universitaria de la cual se retiró?</label>
+             
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="inCursoPrevio1" name="inCursoPrevio" class="custom-control-input"
+                                    value="1" onchange="radio1(this);">
+                                <label class="custom-control-label" for="inCursoPrevio1">Si</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="inCursoPrevio2" name="inCursoPrevio" class="custom-control-input"
+                                    value="0" onchange="radio1(this);" required >
+                                <label class="custom-control-label" for="inCursoPrevio2">No</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label requiredField" for="inMotivo">Si su respuesta a la anterior pregunta fue SI, seleccione cuál fue el motivo</label>
+                            <select name="inMotivo" class="custom-select" id="inMotivo" onchange="Motivo()" >
+                                <option disabled selected value> -- Selecciona una opción -- </option>
+                                <option value="Problemas-económicos">Problemas económicos</option>
+                                <option value="Cupo-designado">Cupo designado por el Examen Nacional de Admisiones</option>
+                                <option value="Nocumplio-expectativas">La carrera no cumplió con sus expectativas </option>
+                                <option value="Otro-motivo">Otro Motivo</option>
+                            </select>
+                            <input class="form-control" id="otroMotivo" name="otroMotivo" type="text" style="display:none" placeholder="¿Cual es su motivo?" />
+                        </div>
+                    </div>    
+                    
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label class="control-label requiredField" for="inEmail">Correo electrónico</label>
                             <input class="form-control" id="inEmail" name="inEmail" type="email" required="" />
                         </div>
+
+
                         <div class="form-group col-md-6">
                             <label class="control-label requiredField" for="inCarrera">Selecciona la carrera a la que
                                 postulas</label>
+
                             <select name="inCarrera" class="custom-select" required>
                                 <option disabled selected value> -- Selecciona una opción -- </option>
-                                <option value="1">Administración de empresas</option>
-                                <option value="2">Contabilidad y Auditoria </option>
-                                <option value="3">Economía </option>
-                                <option value="4">Gerencia y Liderazgo </option>
-                                <option value="5">Biomedicina</option>
-                                <option value="6">Computación </option>
-                                <option value="7">Electricidad</option>
-                                <option value="8">Electrónica y Automatización </option>
-                                <option value="9">Ingeniería Automotriz</option>
-                                <option value="10">Ingeniería Civil </option>
-                                <option value="11">Ingeniería Industrial</option>
-                                <option value="12">Telecomunicaciones </option>
-                                <option value="13">Agropecuaria </option>
-                                <option value="14">Biotecnología </option>
-                                <option value="15">Gestión de Riesgos y desastres</option>
-                                <option value="16">Ingeniería Ambiental</option>
-                                <option value="17">Medicina Veterinaria </option>
-                                <option value="18">Comunicación </option>
-                                <option value="19">Derecho </option>
-                                <option value="20">Mecatrónica</option>
-                                <option value="21">Mecánica</option>
-                                <option value="22">Diseño Multimedia </option>
-                                <option value="23">Filosofía </option>
-                                <option value="24">Psicología </option>
-                                <option value="25">Educación </option>
-                                <option value="26">Educación Inicial </option>
-                                <option value="27">Educación Básica </option>
-                                <option value="28">Pedagogía de la Actividad Física y el Deporte</option>
-                                <option value="29">Antropología (carrera en línea)</option>
-                                <option value="30">Desarrollo local (carrera en línea)</option>
-                                <option value="31">Educación Intercultural bilingüe (carrera en línea)</option>
-                                <option value="32">Teología (carrera en línea)</option>
+                                <?php $i = 1; $texto = '';foreach($carreras as $c){
+                                        $texto .= '<option value="'.$c->id_carrera.'">'.$c->nombre.'</option>';
+                                        $i++;}echo ($texto)?>        
                             </select>
                         </div>
+
+
+
+
+
+
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -141,17 +159,60 @@
                                 que quieres estudiar?</label>
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="inSeguro1" name="inSeguro" class="custom-control-input"
-                                    value="1">
+                                    value="1" onchange="radio2(this);">
                                 <label class="custom-control-label" for="inSeguro1">Si</label>
                             </div>
                             <div class="custom-control custom-radio">
                                 <input type="radio" id="inSeguro2" name="inSeguro" class="custom-control-input"
-                                    value="0" required>
+                                    value="0" onchange="radio2(this);" required>
                                 <label class="custom-control-label" for="inSeguro2">No</label>
                             </div>
                         </div>
+                        
                         <div class="form-group col-md-6">
-                            <label class="control-label requiredField" for="inC01">¿Cómo te sientes con respecto a
+                            <label class="control-label requiredField" for="inMotivo2">Si su respuesta fue NO, indique los motivos </label>
+                            <select name="inMotivo2" class="custom-select" id="inMotivo2" onchange="Motivo2()" >
+                                <option disabled selected value> -- Selecciona una opción -- </option>
+                                <option value="Desconocimiento-oferta-academica">Desconocimiento de la oferta educativa</option>
+                                <option value="Desconocimiento-malla-curricular">Desconocimiento de la malla curricular de la carrera</option>
+                                <option value="Falta-interes-vocacional">Falta de identificación de intereses vocacionales</option>
+                                <option value="Falta-habilidades-cognitivas">Falta de identificación de habilidades cognitivas</option>
+                                <option value="Falta-rasgos-personalidad">Falta de identificación de rasgos de la personalidad</option>
+                                <option value="Otro-motivo">Otro Motivo</option>
+                            </select>
+                            <input class="form-control" id="otroMotivo2" name="otroMotivo2" type="text" style="display:none"  placeholder="¿Cual es su motivo?" />
+                            
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                        <label class="control-label requiredField" for="inOpc">Considera que la Universidad Politécnica Salesiana es una buena opción para sus estudios universitarios </label>
+                        <div class="custom-control custom-radio">
+                                <input type="radio" id="inOpcion1" name="inOpcion" class="custom-control-input"
+                                    value="0" onchange="handleChange(this);" required>
+                                <label class="custom-control-label" for="inOpcion1">No</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" id="inOpcion2" name="inOpcion" class="custom-control-input"
+                                    value="1" onchange="handleChange(this);">
+                                <label class="custom-control-label" for="inOpcion2">Si</label>
+                        </div>
+                        <div id="block-op1" style="display:none">
+                            <select name="inOpc" class="custom-select" id="inOpc">
+                                <option disabled selected value> -- Selecciona una opción -- </option>
+                                <option value="Nivel-academico">Nivel académico</option>
+                                <option value="Nivel-social">Nivel social</option>
+                                <option value="Recomendacion">Recomendación de familiares o amigos</option>
+                                <option value="Becas-educativas">Becas educativas</option>
+                                <option value="Practicas-comunitarias">Prácticas comunitarias y preprofesionales </option>
+                                <option value="Laboratorios-experimentacion">Laboratorios de experimentación y práctica </option>
+                                <option value="Proyectos-investigacion">Proyectos de investigación con participación estudiantil </option>
+                            </select>
+                        </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                        <label class="control-label requiredField" for="inC01">¿Cómo te sientes con respecto a
                                 cursar tus estudios universitarios?</label>
                             <select name="inC01" class="custom-select" required>
                                 <option disabled selected value> -- Selecciona una opción -- </option>
@@ -310,13 +371,15 @@
         </div>
     </div>
     <br />
-    <div class="row">
-        <div class="col-md-3">
-            <div class="form-group">
-                <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+    <div class="row" >
+        <div class="col-md-12" style="align-content: center; justify-content: center ;display:flex" >
+            <div class="form-group" >
+                <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block btn-send" >Enviar</button>
             </div>
         </div>
     </div>
 </form>
+
+<?php include 'login-modal.php'; ?>
 
 <?php include 'footer.php'; ?>

@@ -18,4 +18,8 @@ class Aspirante extends CI_Model {
         return $this->db->get($this->tabla);
     }
 
+    public function getAllAspirantes(){
+        
+    }
+
 }

@@ -8,7 +8,7 @@ class Pregunta extends CI_Model {
         parent::__construct();
         $this->tabla = 'pregunta';
     }
-
+    
     public function get_all(){
         $this->db->select('id_pregunta, id_area, enunciado');
 		$this->db->order_by('id_pregunta','asc');

@@ -23,8 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://3.130.148.144/admisiones/';
-
+#$config['base_url'] = 'http://3.130.148.144/admisiones/';
+$config['base_url'] = 'http://localhost/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -324,7 +324,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'ADNUy3qhiUNVRH6LNYpGguSCS2Yy1IWG';
 
 /*
 |--------------------------------------------------------------------------
