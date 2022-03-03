@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Encuesta extends CI_Controller {
 
+	public $session = null;
 
     function __construct()
 	{
@@ -15,7 +16,9 @@ class Encuesta extends CI_Controller {
 		$this->load->model('Respuesta', '', TRUE);
 		$this->load->model('Resultado', '', TRUE);	
 		$this->load->model('Carrera', '', TRUE);	
-		$this->load->model('Usuarios', '', TRUE);}
+		$this->load->model('Usuarios', '', TRUE);
+		$this->load->library('form_validation');
+		$this->load->library('session');}
 
 	public function index()
 	{
@@ -25,18 +28,37 @@ class Encuesta extends CI_Controller {
 		$this->load->view('home', $data);
 	}
 
+	//
 	public function logout(){
 		$this->session->unset_userdata('username');
+		$this->session->sess_destroy(); 
 		redirect(base_url().'encuesta/index');
 	}
 
 	public function dashboard()
 	{
+		$resumen_general = $this->Resultado->getAllResumen()->result();
+		$data['resultado_general'] = $resumen_general;
+
 		$resultados = $this->Resultado->getGroupResultado()->result();
-		
-		$data['resultado']=$resultados;
-		//$data['encuestados']=
+		$aspirantes = $this->Aspirante->getAllAspirantes()->result();
+		$acepta = $this->Aspirante->getAcepta()->result();
+		$noacepta = $this->Aspirante->getNoacepta()->result();
+		$aspirante_masculino = $this->Aspirante->getMasculino()->result();
+		$aspirante_femenino = $this->Aspirante->getFemenino()->result();
+
+		$data['resultado'] = $resultados;
+		$data['encuestados'] = $aspirantes;
+		$data['acepta'] = $acepta;
+		$data['noacepta'] = $noacepta;
+		$data['masculino'] = $aspirante_masculino;
+		$data['femenino'] = $aspirante_femenino;
+
+		$data['session']=$this->session->userdata('username');
+		//echo $this->session->userdata('username');
+
 		if($this->session->userdata('username') != ''){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
 			$this->load->view('admin/index-admin',$data);
 		}else{
 			redirect(base_url(). 'encuesta/index');
@@ -55,6 +77,7 @@ class Encuesta extends CI_Controller {
 		$consulta = $this->Usuarios->get_by_user($user,$psw);
 		//echo $consulta->usuario;
 		if ($consulta->num_rows() != 0){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
 			$this->load->view('admin/index-admin');
 		}else{
 			$this->load->view('home');
@@ -63,9 +86,9 @@ class Encuesta extends CI_Controller {
 	}
 
 	public function login_validation(){
-		$this->load->library('form_validation');
+		
 		$this->form_validation->set_rules('inUsuario', 'Username', 'required');
-		$this->form_validation->set_rules('inPassword', 'Username', 'required');
+		$this->form_validation->set_rules('inPassword', 'Password', 'required');
 
 		if($this->form_validation->run()){
 			//true
@@ -87,7 +110,9 @@ class Encuesta extends CI_Controller {
 			}
 		}else{
 			//false
-			$this->index();
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('Encuesta/index');
+			//$this->index();
 		}
 
 
@@ -100,6 +125,7 @@ class Encuesta extends CI_Controller {
 		$data['resultado'] = $resumen;
 
 		if($this->session->userdata('username') != ''){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
 			$this->load->view('admin/usuarios-admin',$data);
 		}else{
 			redirect(base_url(). 'encuesta/index');
@@ -123,7 +149,50 @@ class Encuesta extends CI_Controller {
 		$data['carrera'] = $carrera->nombre;
 		$data['titulo'] = "Resultados  | Intereses profesionales";
 		$this->load->view('resultado', $data);	
+	}
 
+	public function viewCrearUsuario(){
+		if($this->session->userdata('username') != ''){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/register-admin');
+		}else{
+			redirect(base_url(). 'encuesta/dashboard');
+		}
+	}
+
+	public function viewAllUsuarios(){
+
+		$consulta = $this->Usuarios->getAllUsers()->result();
+		$data['usuarios']=$consulta;
+
+		if($this->session->userdata('username')){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/usuarios-admin',$data);
+		}else{
+			redirect(base_url(). 'encuesta/index');
+		}
+	}
+
+	public function crearUsuario(){
+		$usuario = $this->input->post('usuario');
+		$password = $this->input->post('password');
+		$estado_admin=1;
+
+		$admin = array (
+			'usuario' => $usuario,
+			'psw' => $password,
+			'estado' => $estado_admin
+		);
+
+		$insertar_usuario = $this->Usuarios->insertar($admin);
+		if ($insertar_usuario){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/index-admin');
+		}else{
+			$this->session->set_flashdata('error','Usuario no registrado');
+			//$this->load->view('admin/register-admin');
+			redirect(base_url(). 'encuesta/viewCrearUsuario');
+		}
 
 	}
 
@@ -188,6 +257,7 @@ class Encuesta extends CI_Controller {
 			$buenaOpcionSi = 'Ninguno';
 		}
 		
+		$estado_aspirante=1;
 
 		/* Verificar si el usuario ya registro su encuesta */
 		$consulta = $this->Aspirante->get_by_cedula($cedula);
@@ -224,7 +294,8 @@ class Encuesta extends CI_Controller {
 				'c08' => $c08,
 				'c09' => $c09,
 				'acepta'=> $acepta,
-				'fecha' => date('Y-m-d H:i:s')
+				'fecha' => date('Y-m-d H:i:s'),
+				'estado' => $estado_aspirante,
 			);
 	/* Guardar datos del 'aspirante' */
 	$res = $this->Aspirante->insertar($aspirante);

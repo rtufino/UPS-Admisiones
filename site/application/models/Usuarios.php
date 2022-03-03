@@ -10,8 +10,8 @@ class Usuarios extends CI_Model {
     }
 
     public function getAllUsers(){
-        $this->db->select('nombre');
-		$this->db->order_by('nombre');
+        $this->db->select('usuario, psw, estado');
+		$this->db->order_by('usuario');
         //$this->db->limit(10);
 		return $this->db->get($this->tabla);
     }

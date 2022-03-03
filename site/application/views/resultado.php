@@ -1,22 +1,31 @@
 <?php include 'header.php'; ?>
 
 
-
 <div class="row">
-    <div class="col-md-1 ">
-        <img src="<?php echo base_url(); ?>static/logo.png" class="rounded mx-auto d-block" alt="UPS" width="100px">
+        <div class="col-md-12 text-center">
+        
+            <h3 style="font-weight:bold;"><img src="<?php echo base_url(); ?>static/logo2.png" class="rounded mx-auto d-block" alt="UPS" width="80px" style="margin-bottom: 1rem;">  Universidad Politécnica Salesiana</h3>
+            <h4 style="font-weight:bold">CENTRO PSICOLÓGICO “PADRE EMILIO GAMBIRASIO”</h4>
+            <h5>PERFIL DE INTERESES PROFESIONALES</h5>
+        </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-4 " >
+        
     </div>
-    <div class="col-md-11 text-center">
-        <h3>Universidad Politécnica Salesiana</h3>
-        <h4>CENTRO PSICOLÓGIO “PADRE EMILIO GAMBIRASIO”</h4>
-        <h5>PERFIL DE INTERESES PROFESIONALES</h5>
+    <div class="col-md-4 " >
+        <input type="button" value="Imprimir" class="form-control btn-success" onclick="javascript:window.print()" />
+    </div>
+    <div class="col-md-4 " >
+        
     </div>
 </div>
+
 <br />
 <div class="row">
     <div class="col-md-6" style="margin-top: 10px;">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="background-color: rgb(17 107 32 / 27%);">
                 <h6>Datos informativos</h6>
             </div>
             <div class="card-body">
@@ -34,7 +43,7 @@
     </div>
     <div class="col-md-6" style="margin-top: 10px;">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="background-color: rgb(17 107 32 / 27%);">
                 <h6>Resultados del cuestionario</h6>
             </div>
             <div class="card-body">
@@ -66,14 +75,14 @@
 <div class="row">
     <div class="col-md">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header" style="background-color: rgb(17 107 32 / 27%);">
                 <h6>Profesiograma</h6>
             </div>
             <div class="card-body">
                 <canvas id="myChart" class="chartjs" width="478" height="200"
                     style="display: block; width: 478px; height: 200px;"></canvas>
             </div>
-            <div class="card-footer">
+            <div class="card-footer" style="background-color: rgb(17 107 32 / 27%); font-weight: bold;">
                 Tabla de referencia: las puntuaciones obtenidas en el test se agrupan en 3 categorías, siendo estas: de
                 0 a 6 puntos = intereses no significativos. De 7 a 12 puntos = intereses medios. De 13 a 18 puntos =
                 intereses muy altos.

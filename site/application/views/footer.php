@@ -3,7 +3,7 @@
     <footer>
             <div class="text-muted">
                 Desarrollado por el grupo de Inteligencia Artificial de la Carrera de Computación
-                <br/>UPS © 2021
+                <br/>Version 1.2 - UPS © 2022
             </div>
         </footer>
     

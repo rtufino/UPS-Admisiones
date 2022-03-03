@@ -3,13 +3,12 @@
 <form action="<?php echo site_url("encuesta/procesar"); ?>" method="POST">
 
     <div class="row">
-        <div class="col-md-1 ">
-            <img src="<?php echo base_url(); ?>static/logo2.png" class="rounded mx-auto d-block" alt="UPS" width="100px">
-        </div>
-        <div class="col-md-11 text-center">
-            <h3 style="font-weight:bold">Universidad Politécnica Salesiana</h3>
+      
+        <div class="col-md-12 text-center">
+        
+            <h3 style="font-weight:bold;"><img src="<?php echo base_url(); ?>static/logo2.png" class="rounded mx-auto d-block" alt="UPS" width="80px" style="margin-bottom: 1rem;">  Universidad Politécnica Salesiana</h3>
             <h4 style="font-weight:bold">CENTRO PSICOLÓGICO “PADRE EMILIO GAMBIRASIO”</h4>
-            <h5>PERFIL DE INTERESES PROFESIONALES</h5>
+            
         </div>
     </div>
     <br />
@@ -18,6 +17,7 @@
             <div class="card">
                 <div class="card-body">
                     <p>
+                    <h5 style="font-weight:bold; text-align: center;margin-bottom: 1rem;">PERFIL DE INTERESES PROFESIONALES</h5>
                         La Universidad Politécnica Salesiana sede Quito se encuentra desarrollando un proyecto de
                         investigación sobre la orientación vocacional-profesional, en esta investigación se pretende
                         desarrollar instrumentos propios que permitan un acercamiento
@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-md">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: rgb(17 107 32 / 27%);">
                     <h6>Datos informativos </h6>
                     Llena la siguiente información con tus datos personales.
                 </div>

@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous" />
     <link href="<?php echo base_url(); ?>static/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="<?php echo base_url(); ?>static/logo2.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/fontawesome.min.css">
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
     <style>
         body{
             background-color:white;
@@ -64,7 +68,7 @@
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
-  <a class="navbar-brand" href="#">IDEIAGEOCA</a>
+  <a class="navbar-brand" style="margin-left: 1rem; color:#fff" ><i class="fa-solid fa-users"></i> IDEIAGEOCA</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -72,15 +76,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
+        <a class="nav-link" style="font-weight: 300; text-decoration: underline;" href="<?php echo site_url("encuesta/index"); ?>">Home <span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    <a id="sesion" href="#modalLoginForm" data-toggle="modal" class="get-started-btn-index" style="text-decoration: none;">Personal Autorizado</a>
+    <a id="sesion" href="#modalLoginForm" data-toggle="modal" class="get-started-btn-index" style="text-decoration: none; font-weight: bold;">Personal Autorizado</a>
       
     </form>
   </div>
 </nav>
     <br />
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-left: 35px; padding-right: 35px;">
 

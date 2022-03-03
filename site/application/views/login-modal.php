@@ -12,10 +12,10 @@
           </div>
           <div class="modal-body mx-3">
             <div class="input-group mb-3">
-            <label for="validationTooltipUsername">Usuario</label>
+            <label for="validationTooltipUsername" style="font-weight: bold;">Usuario</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                    <span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="fa-solid fa-user"></i></span>
                     </div>
                     <input type="text" class="form-control" name="inUsuario" id="inUsuario" placeholder="Usuario Personal" aria-describedby="validationTooltipUsernamePrepend" required>
                     <div class="invalid-tooltip">
@@ -26,10 +26,10 @@
 
             <div class="md-form mb-4">
             <div class="input-group mb-3">
-            <label for="validationTooltipUsername">Contraseña</label>
+            <label for="validationTooltipUsername" style="font-weight: bold;">Contraseña</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
-                    <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                    <span class="input-group-text" id="validationTooltipUsernamePrepend"><i class="fa-solid fa-key"></i></span>
                     </div>
                     <input type="password" class="form-control" name="inPassword" id="inPassword" placeholder="Contraseña" aria-describedby="validationTooltipUsernamePrepend" required>
                     <div class="invalid-tooltip">
