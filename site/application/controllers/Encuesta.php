@@ -53,7 +53,7 @@ class Encuesta extends CI_Controller {
 		$data['noacepta'] = $noacepta;
 		$data['masculino'] = $aspirante_masculino;
 		$data['femenino'] = $aspirante_femenino;
-
+                $data['fecha_actual'] = date("Y/m/d");
 		$data['session']=$this->session->userdata('username');
 		//echo $this->session->userdata('username');
 
@@ -200,11 +200,11 @@ class Encuesta extends CI_Controller {
 	{
 		/* Obtener los datos del formulario */
 		$cedula = $this->input->post('inCedula');
-		$nombres = $this->input->post('inNombres');
-		$apellidos = $this->input->post('inApellidos');
+                $nombres = mb_strtoupper($this->input->post('inNombres'),'UTF-8');
+                $apellidos = mb_strtoupper($this->input->post('inApellidos'),'UTF-8');
 		$edad = $this->input->post('inEdad');
 		$sexo = $this->input->post('inSexo');
-		$ciudad = $this->input->post('inCiudad');
+		$ciudad = mb_strtoupper($this->input->post('inCiudad'),'UTF-8');
 		$colegio = $this->input->post('inColegio');
 
 		$tipoCarrera = $this->input->post('inTipoCarrera');

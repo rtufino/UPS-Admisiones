@@ -21,12 +21,17 @@ class Resultado extends CI_Model {
             a.cedula,
             a.ciudad, 
             c.nombre,
-            a.fecha
+            a.fecha,
+            a.estado
         from 
             area_interes ai, 
             aspirante a, 
             resultado r, 
-            carrera c where ai.id_area = r.id_area and a.cedula = r.cedula and c.id_carrera = a.id_carrera GROUP by a.nombres
+            carrera c where ai.id_area = r.id_area 
+            and a.cedula = r.cedula 
+            and c.id_carrera = a.id_carrera 
+            and estado = 1
+            GROUP by a.nombres
         order by a.nombres asc;";
         //$this->db->limit(10);
 		return $this->db->query($sql);

@@ -11,7 +11,7 @@
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-10">
+        <div class="col-lg-12">
           <div class="row">
 
             <!-- Sales Card -->
@@ -20,7 +20,7 @@
 
 
                 <div class="card-body">
-                  <h5 class="card-title">Encuestadas </h5>
+                  <h5 class="card-title">Campaña <span>Marzo 2022</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -39,12 +39,12 @@
             </div><!-- End Sales Card -->
 
             <!-- Customers Card -->
-            <div class="col-xxl-6 col-xl-12">
+            <div class="col-xxl-6 col-md-6">
 
               <div class="card info-card customers-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">No participan</h5>
+                  <h5 class="card-title">No participan en el estudio</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">

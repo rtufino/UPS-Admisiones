@@ -141,9 +141,11 @@
 
                             <select name="inCarrera" class="custom-select" required>
                                 <option disabled selected value> -- Selecciona una opción -- </option>
-                                <?php $i = 1; $texto = '';foreach($carreras as $c){
-                                        $texto .= '<option value="'.$c->id_carrera.'">'.$c->nombre.'</option>';
-                                        $i++;}echo ($texto)?>        
+                                <?php 
+                                foreach($carreras as $c){
+                                    echo "<option value='$c->id_carrera'> $c->nombre </option>";                      
+                                }?>
+        
                             </select>
                         </div>
 
