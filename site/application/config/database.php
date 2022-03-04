@@ -76,8 +76,13 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
+<<<<<<< HEAD
 	'username' => 'xxx',
 	'password' => 'xxx',
+=======
+	'username' => 'admin',
+	'password' => 'admin123',
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
 	'database' => 'admisiones',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

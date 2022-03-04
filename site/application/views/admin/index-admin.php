@@ -9,12 +9,22 @@
 
     <section class="section dashboard">
       <div class="row">
+<<<<<<< HEAD
+=======
+
+        <!-- Left side columns -->
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
         <div class="col-lg-12">
           <div class="row">
             <div class="col-xxl-6 col-md-6">
               <div class="card info-card sales-card">
                 <div class="card-body">
+<<<<<<< HEAD
                 <h5 class="card-title">Campaña <span>Marzo 2022</span></h5>
+=======
+                  <h5 class="card-title">Campaña <span>Marzo 2022</span></h5>
+
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-people"></i>
@@ -29,11 +39,23 @@
                 </div>
 
               </div>
+<<<<<<< HEAD
             </div>
             <div class="col-xxl-6 col-md-6">
+=======
+            </div><!-- End Sales Card -->
+
+            <!-- Customers Card -->
+            <div class="col-xxl-6 col-md-6">
+
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
               <div class="card info-card customers-card">
                 <div class="card-body">
                   <h5 class="card-title">No participan en el estudio</h5>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>

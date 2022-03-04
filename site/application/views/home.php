@@ -137,7 +137,12 @@
                                 <?php 
                                 foreach($carreras as $c){
                                     echo "<option value='$c->id_carrera'> $c->nombre </option>";                      
+<<<<<<< HEAD
                                 }?>        
+=======
+                                }?>
+        
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
                             </select>
                         </div>
                     </div>
@@ -366,4 +371,9 @@
 </form>
 
 <?php include 'login-modal.php'; ?>
+<<<<<<< HEAD
 <?php include 'footer.php'; ?>
+=======
+
+<?php include 'footer.php'; ?>
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db

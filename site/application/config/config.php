@@ -24,7 +24,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 #$config['base_url'] = 'http://3.130.148.144/admisiones/';
+<<<<<<< HEAD
 $config['base_url'] = 'https://perfiles.grupoia.ec/';
+=======
+#$config['base_url'] = 'http://172.17.42.240/';
+$config['base_url'] = 'http://perfiles.grupoia.ec/';
+
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
 /*
 |--------------------------------------------------------------------------
 | Index File

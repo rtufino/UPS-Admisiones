@@ -3,7 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
+<<<<<<< HEAD
 -- Tiempo de generación: 04-03-2022 a las 16:05:04
+=======
+-- Tiempo de generación: 03-03-2022 a las 17:03:53
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
 -- Versión del servidor: 10.3.34-MariaDB-0ubuntu0.20.04.1
 -- Versión de PHP: 7.4.3
 
@@ -44922,7 +44926,11 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `psw`, `estado`) VALUES
+<<<<<<< HEAD
 (1, 'admin', 'pP03$22', '1'),
+=======
+(1, 'admin', 'admin123', '1'),
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
 (2, 'atandalla', '2021', '1');
 
 --

@@ -26,12 +26,190 @@ class Encuesta extends CI_Controller {
 		$data['carreras'] = $this->Carrera->getAllCarrera()->result();
 		$this->load->view('home', $data);
 	}
+<<<<<<< HEAD
 	// Procesar la información del formulario y guardado de datos.
 	public function procesar(){
 		/* Obtener los datos del formulario */
 		$cedula = $this->input->post('inCedula');
 		$nombres = mb_strtoupper($this->input->post('inNombres'),'UTF-8');
 		$apellidos = mb_strtoupper($this->input->post('inApellidos'),'UTF-8');
+=======
+
+	//
+	public function logout(){
+		$this->session->unset_userdata('username');
+		$this->session->sess_destroy(); 
+		redirect(base_url().'encuesta/index');
+	}
+
+	public function dashboard()
+	{
+		$resumen_general = $this->Resultado->getAllResumen()->result();
+		$data['resultado_general'] = $resumen_general;
+
+		$resultados = $this->Resultado->getGroupResultado()->result();
+		$aspirantes = $this->Aspirante->getAllAspirantes()->result();
+		$acepta = $this->Aspirante->getAcepta()->result();
+		$noacepta = $this->Aspirante->getNoacepta()->result();
+		$aspirante_masculino = $this->Aspirante->getMasculino()->result();
+		$aspirante_femenino = $this->Aspirante->getFemenino()->result();
+
+		$data['resultado'] = $resultados;
+		$data['encuestados'] = $aspirantes;
+		$data['acepta'] = $acepta;
+		$data['noacepta'] = $noacepta;
+		$data['masculino'] = $aspirante_masculino;
+		$data['femenino'] = $aspirante_femenino;
+                $data['fecha_actual'] = date("Y/m/d");
+		$data['session']=$this->session->userdata('username');
+		//echo $this->session->userdata('username');
+
+		if($this->session->userdata('username') != ''){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/index-admin',$data);
+		}else{
+			redirect(base_url(). 'encuesta/index');
+		}
+		
+		//$this->load->view('admin/index-admin', $data);
+	}
+
+	public function usuarios()
+	{
+		$user= $this->input->post('inUsuario');
+		$psw= $this->input->post('inPassword');
+		
+
+		/* Verificar si el usuario se encuentra registrado*/
+		$consulta = $this->Usuarios->get_by_user($user,$psw);
+		//echo $consulta->usuario;
+		if ($consulta->num_rows() != 0){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/index-admin');
+		}else{
+			$this->load->view('home');
+		}
+		//$getUsuario = $this->Aspirante->get_by_cedula($cedula);
+	}
+
+	public function login_validation(){
+		
+		$this->form_validation->set_rules('inUsuario', 'Username', 'required');
+		$this->form_validation->set_rules('inPassword', 'Password', 'required');
+
+		if($this->form_validation->run()){
+			//true
+			$user= $this->input->post('inUsuario');
+			$psw= $this->input->post('inPassword');
+
+			//Model Function
+			if ($this->Usuarios->can_login($user,$psw)){
+				$session_data = array(
+					'username' => $user
+				);
+
+				$this->session->set_userdata($session_data);
+				redirect(base_url(). 'encuesta/dashboard');
+			}
+			else{
+				$this->session->set_flashdata('error','Usuario o Password Invalido');
+				redirect(base_url(). 'encuesta/index');
+			}
+		}else{
+			//false
+			$this->session->set_flashdata('error', validation_errors());
+			redirect('Encuesta/index');
+			//$this->index();
+		}
+
+
+	}
+
+	public function tableUsuarios()
+	{
+			/* Obtener el resumen */
+		$resumen = $this->Resultado->getAllResumen()->result();
+		$data['resultado'] = $resumen;
+
+		if($this->session->userdata('username') != ''){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/usuarios-admin',$data);
+		}else{
+			redirect(base_url(). 'encuesta/index');
+		}
+
+	}
+
+	public function resultadosUsuarios(){
+		
+		$cedula = $this->input->get('aspirante');
+		
+		$aspirante = $this->Aspirante->get_by_cedula($cedula)->result()[0];
+	
+			/* Obtener el resumen */
+		$resumen = $this->Resultado->get_resumen($cedula)->result();
+		/* Obtener la carrera */
+		$carrera = $this->Carrera->get_by_id($aspirante->id_carrera);
+		/* Mostrar los resultados */
+		$data['resultado'] = $resumen;
+		$data['aspirante'] = $aspirante;
+		$data['carrera'] = $carrera->nombre;
+		$data['titulo'] = "Resultados  | Intereses profesionales";
+		$this->load->view('resultado', $data);	
+	}
+
+	public function viewCrearUsuario(){
+		if($this->session->userdata('username') != ''){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/register-admin');
+		}else{
+			redirect(base_url(). 'encuesta/dashboard');
+		}
+	}
+
+	public function viewAllUsuarios(){
+
+		$consulta = $this->Usuarios->getAllUsers()->result();
+		$data['usuarios']=$consulta;
+
+		if($this->session->userdata('username')){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/usuarios-admin',$data);
+		}else{
+			redirect(base_url(). 'encuesta/index');
+		}
+	}
+
+	public function crearUsuario(){
+		$usuario = $this->input->post('usuario');
+		$password = $this->input->post('password');
+		$estado_admin=1;
+
+		$admin = array (
+			'usuario' => $usuario,
+			'psw' => $password,
+			'estado' => $estado_admin
+		);
+
+		$insertar_usuario = $this->Usuarios->insertar($admin);
+		if ($insertar_usuario){
+			$this->session->set_flashdata('username',$this->session->userdata('username'));
+			$this->load->view('admin/index-admin');
+		}else{
+			$this->session->set_flashdata('error','Usuario no registrado');
+			//$this->load->view('admin/register-admin');
+			redirect(base_url(). 'encuesta/viewCrearUsuario');
+		}
+
+	}
+
+	public function procesar()
+	{
+		/* Obtener los datos del formulario */
+		$cedula = $this->input->post('inCedula');
+                $nombres = mb_strtoupper($this->input->post('inNombres'),'UTF-8');
+                $apellidos = mb_strtoupper($this->input->post('inApellidos'),'UTF-8');
+>>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
 		$edad = $this->input->post('inEdad');
 		$sexo = $this->input->post('inSexo');
 		$ciudad = mb_strtoupper($this->input->post('inCiudad'),'UTF-8');
