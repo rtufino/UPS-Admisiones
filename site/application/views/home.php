@@ -1,14 +1,10 @@
 <?php include 'header.php'; ?>
 
 <form action="<?php echo site_url("encuesta/procesar"); ?>" method="POST">
-
     <div class="row">
-      
         <div class="col-md-12 text-center">
-        
             <h3 style="font-weight:bold;"><img src="<?php echo base_url(); ?>static/logo2.png" class="rounded mx-auto d-block" alt="UPS" width="80px" style="margin-bottom: 1rem;">  Universidad Politécnica Salesiana</h3>
             <h4 style="font-weight:bold">CENTRO PSICOLÓGICO “PADRE EMILIO GAMBIRASIO”</h4>
-            
         </div>
     </div>
     <br />
@@ -133,25 +129,17 @@
                             <label class="control-label requiredField" for="inEmail">Correo electrónico</label>
                             <input class="form-control" id="inEmail" name="inEmail" type="email" required="" />
                         </div>
-
-
                         <div class="form-group col-md-6">
                             <label class="control-label requiredField" for="inCarrera">Selecciona la carrera a la que
                                 postulas</label>
-
                             <select name="inCarrera" class="custom-select" required>
                                 <option disabled selected value> -- Selecciona una opción -- </option>
-                                <?php $i = 1; $texto = '';foreach($carreras as $c){
-                                        $texto .= '<option value="'.$c->id_carrera.'">'.$c->nombre.'</option>';
-                                        $i++;}echo ($texto)?>        
+                                <?php 
+                                foreach($carreras as $c){
+                                    echo "<option value='$c->id_carrera'> $c->nombre </option>";                      
+                                }?>        
                             </select>
                         </div>
-
-
-
-
-
-
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -168,7 +156,6 @@
                                 <label class="custom-control-label" for="inSeguro2">No</label>
                             </div>
                         </div>
-                        
                         <div class="form-group col-md-6">
                             <label class="control-label requiredField" for="inMotivo2">Si su respuesta fue NO, indique los motivos </label>
                             <select name="inMotivo2" class="custom-select" id="inMotivo2" onchange="Motivo2()" >
@@ -180,10 +167,8 @@
                                 <option value="Falta-rasgos-personalidad">Falta de identificación de rasgos de la personalidad</option>
                                 <option value="Otro-motivo">Otro Motivo</option>
                             </select>
-                            <input class="form-control" id="otroMotivo2" name="otroMotivo2" type="text" style="display:none"  placeholder="¿Cual es su motivo?" />
-                            
+                            <input class="form-control" id="otroMotivo2" name="otroMotivo2" type="text" style="display:none"  placeholder="¿Cual es su motivo?" /> 
                         </div>
-
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
@@ -381,5 +366,4 @@
 </form>
 
 <?php include 'login-modal.php'; ?>
-
 <?php include 'footer.php'; ?>

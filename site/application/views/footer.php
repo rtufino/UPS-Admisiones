@@ -1,4 +1,3 @@
-
     </div>
     <footer>
             <div class="text-muted">
@@ -6,18 +5,15 @@
                 <br/>Version 1.2 - UPS © 2022
             </div>
         </footer>
-    
                     <script>
                         function Motivo() {
                         var mt1 = document.getElementById("inMotivo").value;
                             if (mt1 === 'Otro-motivo') {
                                 document.getElementById("otroMotivo").style.display = "block";
                                 document.getElementById("otroMotivo").setAttribute("style", "margin-top:0.5rem")
-                                //$("#otroMotivo").show();
                                 }
                             else{
                                 document.getElementById("otroMotivo").style.display = "none";
-                                //$("#otroMotivo").hide();
                             }
                         }
 
@@ -26,43 +22,33 @@
                             if (mt2 === 'Otro-motivo') {
                                 document.getElementById("otroMotivo2").style.display = "block";
                                 document.getElementById("otroMotivo2").setAttribute("style", "margin-top:0.5rem")
-                                //$("#otroMotivo").show();
                                 }
                             else{
                                 document.getElementById("otroMotivo2").style.display = "none";
-                                //$("#otroMotivo").hide();
                             }
                         }
-
-
-                        
                     </script>
                     <script>
                       function handleChange(r11) {
-                        if (r11.value == 1){
-                            console.log("entra")
-                            document.getElementById("block-op1").style.display = "block";
-                            document.getElementById("block-op1").setAttribute("style", "margin-top:0.5rem")
-                        }else{
-                            console.log("no entra")
-                            document.getElementById("block-op1").style.display = "none";
-                        }
-
+                            if (r11.value == 1){
+                                console.log("entra")
+                                document.getElementById("block-op1").style.display = "block";
+                                document.getElementById("block-op1").setAttribute("style", "margin-top:0.5rem")
+                            }else{
+                                console.log("no entra")
+                                document.getElementById("block-op1").style.display = "none";
+                            }
                         }
                     </script>
 
                      <script>
                       function radio1(r1) {
-                        if (r1.value == 1){
-                            
-                            document.getElementById("inMotivo").removeAttribute("disabled"); 
-                            
-                        }else{
-    
-                            document.getElementById("inMotivo").setAttribute("value", "");
-                            document.getElementById("inMotivo").disabled=true;
-                        }
-
+                            if (r1.value == 1){
+                                document.getElementById("inMotivo").removeAttribute("disabled"); 
+                            }else{
+                                document.getElementById("inMotivo").setAttribute("value", "");
+                                document.getElementById("inMotivo").disabled=true;
+                            }
                         }
                     </script>
 
@@ -70,10 +56,8 @@
                       function radio2(r2) {
                         if (r2.value == 1){
                             document.getElementById("inMotivo2").setAttribute("value", "");
-                            document.getElementById("inMotivo2").disabled=true;
-                                                        
+                            document.getElementById("inMotivo2").disabled=true;                                            
                         }else{
-                
                             document.getElementById("inMotivo2").removeAttribute("disabled"); 
                         }
 

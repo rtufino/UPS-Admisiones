@@ -19,7 +19,7 @@ class Aspirante extends CI_Model {
     }
 
     public function getAllAspirantes(){
-        $sql = "select count(*) total FROM aspirante;";
+        $sql = "select count(*) total FROM aspirante where estado = 1;";
 		return $this->db->query($sql);
     }
 
@@ -29,17 +29,17 @@ class Aspirante extends CI_Model {
     }
 
     public function getNoacepta(){
-        $sql = "select count(*) total_noacepta from aspirante a where a.acepta = 'No';";
+        $sql = "select count(*) total_noacepta from aspirante a where a.acepta = 'No' AND estado = 1;";
 		return $this->db->query($sql);
     }
 
     public function getMasculino(){
-        $sql = "select count(*) total_masculino from aspirante where sexo = 'Masculino';";
+        $sql = "select count(*) total_masculino from aspirante where sexo = 'Masculino' AND estado = 1;";
 		return $this->db->query($sql);
     }
 
     public function getFemenino(){
-        $sql = "select count(*) total_femenino from aspirante where sexo = 'Femenino';";
+        $sql = "select count(*) total_femenino from aspirante where sexo = 'Femenino' AND estado = 1;";
 		return $this->db->query($sql);
     }
     

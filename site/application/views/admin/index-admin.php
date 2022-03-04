@@ -5,23 +5,16 @@
     <div class="pagetitle">
       <h1>Dashboard</h1>
 
-    </div><!-- End Page Title -->
+    </div>
 
     <section class="section dashboard">
       <div class="row">
-
-        <!-- Left side columns -->
-        <div class="col-lg-10">
+        <div class="col-lg-12">
           <div class="row">
-
-            <!-- Sales Card -->
             <div class="col-xxl-6 col-md-6">
               <div class="card info-card sales-card">
-
-
                 <div class="card-body">
-                  <h5 class="card-title">Encuestadas </h5>
-
+                <h5 class="card-title">Campaña <span>Marzo 2022</span></h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                     <i class="bi bi-people"></i>
@@ -36,16 +29,11 @@
                 </div>
 
               </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-6 col-xl-12">
-
+            </div>
+            <div class="col-xxl-6 col-md-6">
               <div class="card info-card customers-card">
-
                 <div class="card-body">
-                  <h5 class="card-title">No participan</h5>
-
+                  <h5 class="card-title">No participan en el estudio</h5>
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
@@ -61,23 +49,16 @@
                 </div>
               </div>
 
-            </div><!-- End Customers Card -->
-
-
+            </div>
 
           <div class="col-lg-12">
           <div class="card">
               <div class="card-body pb-0">
                 <h5 class="card-title">Género de Aspirantes</h5>
-
                 <div id="trafficChart" style="min-height: 200px;" class="echart"></div>
-
               </div>
-            </div><!-- End Website Traffic -->
+            </div>
           </div>
-
-
-
           <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
@@ -85,14 +66,11 @@
 
               <!-- Bar Chart -->
               <canvas id="barChart" class="chartjs" style="max-height: 400px;"></canvas>
-
               <!-- End Bar CHart -->
 
             </div>
           </div>
         </div>
-
-
             <!-- Profesiograma -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
@@ -135,9 +113,6 @@
 
           </div>
         </div><!-- End Left side columns -->
-
-  
-
       </div>
     </section>
 

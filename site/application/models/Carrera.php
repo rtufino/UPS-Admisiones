@@ -10,7 +10,7 @@ class Carrera extends CI_Model {
     }
 
     public function getAllCarrera(){
-        $this->db->select('nombre');
+        $this->db->select('id_carrera, nombre');
 		$this->db->order_by('nombre');
         //$this->db->limit(10);
 		return $this->db->get($this->tabla);
