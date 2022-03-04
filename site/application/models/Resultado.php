@@ -30,11 +30,7 @@ class Resultado extends CI_Model {
             carrera c where ai.id_area = r.id_area 
             and a.cedula = r.cedula 
             and c.id_carrera = a.id_carrera 
-<<<<<<< HEAD
             and estado=1 
-=======
-            and estado = 1
->>>>>>> 4148b08221407d848edf953ef0cb29ed4a0150db
             GROUP by a.nombres
         order by a.nombres asc;";
         //$this->db->limit(10);
